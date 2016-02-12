@@ -1,0 +1,347 @@
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after, input[type="search"] {
+  box-sizing: inherit;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: #fff;
+  color: $base-font-color;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  font-style: $base-font-style;
+  min-width: $row-min-width;
+}
+
+
+/* Links
+   ========================================================================== */
+
+a {
+  cursor: pointer;
+  color: $link-color;
+  text-decoration: none;
+  transition: opacity 0.24s ease 0s;
+}
+
+a:visited {
+  color: $link-color;
+}
+
+a:hover {
+  opacity: 0.64;
+  outline: none;
+}
+
+a:active {
+  outline: none;
+  transform: translate(0, 1px);
+}
+
+
+/* Rows
+   ========================================================================== */
+
+.row {
+  @extend .clearfix;
+  padding-left: $global-spacing;
+  padding-right: $global-spacing;
+  @include media(small-up) {
+    padding-left: $global-spacing * 2;
+    padding-right: $global-spacing * 2;
+  }
+  @include media(xlarge-up) {
+    padding-left: $global-spacing * 4;
+    padding-right: $global-spacing * 4;
+  }
+}
+
+.row--centered {
+  max-width: $row-max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ==========================================================================
+   Structure
+   ========================================================================== */
+
+.site-canvas {
+  background: tint($base-color, 96%);
+}
+
+
+/* Header
+   ========================================================================== */
+
+.site-header {
+  background: $base-color url(../graphics/layout/main-bg.svg) -80vw center no-repeat fixed;
+  background-size: cover;
+  background-position: -48vw top;
+  @include animation(main-bg 4s ease 0s 1);
+
+  // position: absolute;
+  width: 100%;
+  z-index: 1000;
+  // background: $base-color;
+  color: $base-font-color;
+  padding: $global-spacing 0;
+  box-shadow: inset 0 -1px 0 0 rgba($base-color, 0.12);
+  padding: ($global-spacing * 2) 0;
+  > .inner {
+    @extend .row, .row--centered;
+  }
+}
+
+/* Headline */
+
+.site-headline {
+  float: left;
+}
+
+.site-title {
+  float: left;
+  margin: 0;
+  line-height: 1;
+  font-size: 1.25rem;
+  color: #fff;
+  a {
+    display: block;
+    color: inherit;
+  }
+  * {
+    vertical-align: top;
+    display: inline-block;
+  }
+  img {
+    width: 25rem;
+  }
+  span {
+    @extend .visually-hidden;
+  }
+}
+
+/* Navigation */
+
+.site-prime-nav {
+  float: right;
+  text-transform: uppercase;
+  margin: -0.5rem 0;
+  .toggle-menu {
+    display: none; // Temporary. Needs mobile-first styling.
+  }
+}
+
+.menu-wrapper {
+  display: none; // Temporary. Needs mobile-first styling.
+  @include media(medium-up) {
+    display: block;
+    float: left;
+  }
+}
+
+.global-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  @include media(medium-up) {
+    float: left;
+    > li {
+      float: left;
+      margin: 0 ($global-spacing / 2) 0 0;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.global-menu-item {
+  display: block;
+  line-height: 2rem;
+  padding: 0 $global-spacing;
+  border-radius: $global-rounded;
+  &, &:visited {
+    color: $base-font-color;
+  }
+  .theme-hero & {
+    &, &:visited {
+      color: #fff;
+    }
+  }
+  &--active {
+    background: rgba($base-color, 0.04);
+    .theme-hero & {
+      background: rgba(#fff, 0.12);
+    }
+  }
+}
+
+
+/* Body
+   ========================================================================== */
+
+.site-body {
+  @extend .clearfix;
+}
+
+.page-suptitle {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: rgba($base-color, 0.48);
+  margin-bottom: 0;
+}
+
+.page-title {
+  font-size: 2rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.page__content {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.page--semi-full {
+  .page__content {
+    @include col(8/12);
+  }
+}
+
+.card-entries {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  @extend .clearfix;
+
+  .card--entry-wrapper {
+    @include col(2/12)
+  }
+
+  .card--form-wrapper {
+    float: left;
+    margin-right: 2rem;
+  }
+
+  .card--form,
+  .card--entry {
+    .card__contents {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .card__title {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .card .card__contents {
+    @include transition(color 0.24s 0s, box-shadow 0.24s 0s);
+  }
+
+  .card .card__contents:hover {
+    opacity: 1;
+    color: $primary-color;
+    box-shadow: 0 0 0 1px $primary-color;
+  }
+}
+
+/// Form
+.form-entry-form-wrapper {
+  legend {
+    @extend h3;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  
+  .field-description {
+    color: tint($base-color, 32%);
+    margin-bottom: 2rem;
+  }
+}
+
+.field-object .field {
+  @extend .form__group;
+}
+
+.field-object .field-number,
+.field-object .field-string {
+  span {
+    @extend .form__label;
+    font-weight: $base-font-bold;
+  }
+  input {
+    @extend .form__control;
+  }
+}
+
+.field-object .field-select {
+  select {
+    @extend .form__control;
+  }
+}
+
+.field-object .field-boolean {
+  position: relative;
+  label {
+    padding-left: 1.25rem;
+  }
+  span {
+    margin-bottom: 0;
+  }
+  input {
+    margin-top: 0.25rem;
+    position: absolute;
+    left: 0;
+  }
+}
+
+.field-user-info {
+  margin-top: 3rem;
+}
+
+/* Footer
+   ========================================================================== */
+
+.site-footer {
+  box-shadow: inset 0 1px 0 0 $base-alpha-color;
+  background: #fff;
+  padding: 2rem 0;
+  color: rgba($base-font-color, 0.64);
+  > .inner {
+    @extend .row, .row--centered;
+  }
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+// ANIMATION
+
+@include keyframes(main-bg) {
+  from {
+    background-position: -44vw top;
+  }
+  to {
+    background-position: -48vw top;
+  }
+}

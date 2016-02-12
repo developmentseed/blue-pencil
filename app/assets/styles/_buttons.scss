@@ -1,0 +1,232 @@
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.button {
+  @extend .antialiased;
+  @include user-select(none);
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: none; 
+  text-shadow: none;
+  text-transform: uppercase;
+  border: 0;
+  // border-radius: $global-radius;
+  min-width: 2.5rem;
+
+  /* hover/active states */
+  &:hover,
+  .drop--open > &,
+  &.button--active,
+  &:active {
+    z-index: 2;
+    opacity: 1;
+    transform: translateZ(0);
+  }
+
+  /* Icon handling */
+  &:before,
+  &:after {
+    font-size: 1.25rem;
+  }
+  &:before { margin-right: 0.5rem; }
+  &:after { margin-left: 0.5rem; }
+
+  /* Checkbox/radio handling */
+  > input[type=checkbox],
+  > input[type=radio] {
+    @extend .visually-hidden;
+  }
+
+  /* Animation */
+  transition: background-color 0.24s ease 0s, color 0.24s ease 0s;
+}
+
+
+/* Button color modifiers
+   ========================================================================== */
+
+/* Primary */
+
+.button--primary {
+  @include button-variation("filled", $primary-color);
+}
+
+/* Primary Outline */
+
+.button--primary-outline {
+  @include button-variation("outline", $primary-color);
+}
+
+/* Primary Unbounded */
+
+.button--primary-unbounded {
+  @include button-variation("unbounded", $primary-color);
+}
+
+/* Secondary */
+
+.button--secondary {
+  @include button-variation("filled", $secondary-color);
+}
+
+/* Secondary Outline */
+
+.button--secondary-outline {
+  @include button-variation("outline", $secondary-color);
+}
+
+/* Secondary Unbounded */
+
+.button--secondary-unbounded {
+  @include button-variation("unbounded", $secondary-color);
+}
+
+/* Tertiary */
+
+.button--tertiary {
+  @include button-variation("filled", tint($base-color, 48%));
+}
+
+/* Tertiary Outline */
+
+.button--tertiary-outline {
+  @include button-variation("outline", tint($base-color, 48%));
+}
+
+/* Tertiary Unbounded */
+
+.button--tertiary-unbounded {
+  @include button-variation("unbounded", tint($base-color, 48%));
+}
+
+/* Ghost (special case) */
+
+.button--ghost {
+  @include button-variation("outline", #fff);
+}
+
+
+/* Button size modifiers
+   ========================================================================== */
+
+/* Small (32px) */
+
+.button--small,
+.button-group--small .button {
+  padding: 0.25rem 1.25rem;
+  min-width: 2rem;
+}
+
+/* Medium (40px)
+   Default
+*/
+
+.button--medium,
+.button-group--medium .button {
+  padding: 0.5rem 1.5rem;
+  min-width: 2.5rem;
+}
+
+/* Large (48px) */
+
+.button--large,
+.button-group--large .button {
+  padding: 0.75rem 1.75rem;
+  min-width: 3rem;
+}
+
+
+/* Button contaning icons & icons modifiers
+   ========================================================================== */
+
+.button--text-hidden {
+  &:before,
+  &:after {
+    margin: 0;
+  }
+  > * {
+    @extend .visually-hidden;
+  }
+  :not(.button-group) & {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+/* ==========================================================================
+   Button groups
+   ========================================================================== */
+
+.button-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  > .button {
+    display: block;
+    position: relative;
+    margin: 0;
+  }
+}
+
+/* Horizontal */
+
+.button-group--horizontal {
+  > .button {
+    float: left;
+  }
+  > .button:first-child:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  > .button:last-child:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  > .button:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  > .button + .button {
+    margin-left: -1px;
+  }
+}
+
+/* Vertical */
+
+.button-group--vertical {
+  > .button {
+    clear: both;
+    width: 100%;
+    border-radius: ($global-radius * 2);
+  }
+  > .button:first-child:not(:last-child) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  > .button:last-child:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  > .button:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  > .button + .button {
+    margin-top: -1px;
+  }
+}
+
+
+/* Extends
+   ========================================================================== */
+
+.button {
+  &.download:before { @extend .linearicons-0758-download2; }
+  &.twitter:before { @extend .linearicons-ext-twitter; }
+  &.edit:before { @extend .linearicons-0014-pencil; }
+}
