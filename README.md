@@ -1,6 +1,13 @@
-# BLue Pencil
+# Blue Pencil
+Blue Pencil allows you to collaboratively manage data that's stored on Github through a simple form. These forms are public and editing suggestions can be made anonymously. The approval process is fully handled through Pull Requests and is restricted to those with write access to the project.
 
-[Blue Pencil Description]
+To set this up, you need to run three projects:
+
+1. This repo contains the client side app that serves the form
+2. [Blue Pencil server](https://github.com/developmentseed/blue-pencil-server) creates the Pull Requests and handles authentication with Github
+3. [Blue Pencil data](https://github.com/developmentseed/blue-pencil-example-data) is the repo where example data and form configuration is stored.
+
+This project is under active development. To get a sense of the roadmap or contribute, please use the [issue queue](https://github.com/developmentseed/blue-pencil/issues).
 
 ## Development environment
 To set up the development environment for this website, you'll need to install the following on your system:
