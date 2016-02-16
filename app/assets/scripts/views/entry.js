@@ -14,6 +14,7 @@ var Entry = React.createClass({
     dataFetching: React.PropTypes.bool,
     dataFetched: React.PropTypes.bool,
     form: React.PropTypes.string,
+    title: React.PropTypes.string,
     entry: React.PropTypes.string,
     schema: React.PropTypes.object,
     formdata: React.PropTypes.object,

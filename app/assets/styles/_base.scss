@@ -319,6 +319,39 @@ a:active {
   margin-top: 3rem;
 }
 
+.field.field-array {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+  legend {
+    margin-bottom: 1rem;
+  }
+
+  .field-array-of-object {
+    border-bottom: 1px solid tint($base-color, 80%);
+  }
+
+  .array-item-list > div{
+    position: relative;
+  }
+
+  .array-item-remove {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  .array-item-add button,
+  .array-item-remove button {
+    @extend .button, .button--tertiary-outline;
+    font-weight: $base-font-bold;
+    padding: 0;
+    line-height: 1.5;
+    min-width: 1.5rem;
+  }
+}
+
 /* Footer
    ========================================================================== */
 
