@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router';
 
 var UhOh = React.createClass({
+  displayName: 'UhOh',
+
   render: function () {
     return (
       <section className='page'>

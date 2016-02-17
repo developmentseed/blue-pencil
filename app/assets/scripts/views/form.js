@@ -5,6 +5,8 @@ import { Link } from 'react-router';
 import { fetchFormsEntries } from '../actions/action-creators';
 
 var Form = React.createClass({
+  displayName: 'Form',
+
   propTypes: {
     dispatch: React.PropTypes.func,
     _fetchFormsEntries: React.PropTypes.func,
