@@ -5,6 +5,8 @@ import { Link } from 'react-router';
 import { fetchForms } from '../actions/action-creators';
 
 var Home = React.createClass({
+  displayName: 'Home',
+
   propTypes: {
     dispatch: React.PropTypes.func,
     _fetchForms: React.PropTypes.func,

@@ -2,6 +2,8 @@
 import React from 'react';
 
 var App = React.createClass({
+  displayName: 'App',
+
   propTypes: {
     dispatch: React.PropTypes.func,
     children: React.PropTypes.object

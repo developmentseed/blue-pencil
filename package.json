@@ -1,6 +1,6 @@
 {
   "name": "blue-pencil",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-beta",
   "description": "Blue Pencil",
   "repository": {
     "type": "git",
@@ -19,8 +19,8 @@
     "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo 'module.exports = {};' > app/assets/scripts/config/local.js",
     "serve": "gulp serve",
     "build": "gulp",
-    "lint": "eslint app/assets/scripts/**/*.js",
-    "test": "echo NO TESTS YET"
+    "lint": "eslint app/assets/scripts/ --ext .js",
+    "test": "echo \"No tests\" && exit 0"
   },
   "browserify": {
     "transform": [
@@ -46,10 +46,11 @@
     "browserify": "^12.0.1",
     "del": "^2.1.0",
     "envify": "^3.4.0",
-    "eslint": "^2.0.0-rc.0",
+    "eslint": "^1.0.0",
     "eslint-config-semistandard": "^5.0.0",
-    "eslint-config-standard": "^4.4.0",
+    "eslint-config-standard": "^4.0.0",
     "eslint-plugin-promise": "^1.0.8",
+    "eslint-plugin-react": "^3.16.1",
     "eslint-plugin-standard": "^1.3.2",
     "gulp": "^3.9.0",
     "gulp-cache": "^0.4.0",

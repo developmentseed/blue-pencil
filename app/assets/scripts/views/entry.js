@@ -7,6 +7,8 @@ import _ from 'lodash';
 import { fetchEntryFormData, updateEntryFormData } from '../actions/action-creators';
 
 var Entry = React.createClass({
+  displayName: 'Entry',
+
   propTypes: {
     dispatch: React.PropTypes.func,
     _fetchEntryFormData: React.PropTypes.func,
