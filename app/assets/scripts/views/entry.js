@@ -7,6 +7,8 @@ import _ from 'lodash';
 import { fetchEntryFormData, updateEntryFormData } from '../actions/action-creators';
 
 var Entry = React.createClass({
+  displayName: 'Entry',
+
   propTypes: {
     dispatch: React.PropTypes.func,
     _fetchEntryFormData: React.PropTypes.func,
@@ -30,12 +32,25 @@ var Entry = React.createClass({
     })
   },
 
+  getInitialState: function () {
+    return {
+      formdata: {}
+    };
+  },
+
   componentDidMount: function () {
     this.props._fetchEntryFormData(this.props.params.form, this.props.params.entry);
   },
 
-  onFormChange: function () {
-    console.log('onFormChange', arguments);
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props.formdata !== nextProps.formdata) {
+      this.setState({formdata: nextProps.formdata});
+    }
+  },
+
+  onFormChange: function (data) {
+    // console.log('onFormChange', arguments);
+    this.setState({formdata: data.formData});
   },
 
   onFormSubmit: function (data) {
@@ -47,7 +62,6 @@ var Entry = React.createClass({
         meta: this.props.meta,
         data: _.omit(data.formData, 'author')
       };
-      console.log('update go!', d);
 
       this.props._updateEntryFormData(this.props.form, this.props.entry, d);
     }
@@ -115,7 +129,7 @@ var Entry = React.createClass({
     return (
       <div className='form-entry-form-wrapper'>
         <Form schema={schema}
-          formData={this.props.formdata}
+          formData={this.state.formdata}
           uiSchema={uiSchema}
           onChange={this.onFormChange}
           onSubmit={this.onFormSubmit}
