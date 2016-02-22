@@ -32,12 +32,19 @@ var Entry = React.createClass({
     })
   },
 
+  getInitialState: function () {
+    return {
+      formdata: this.props.formdata
+    };
+  },
+
   componentDidMount: function () {
     this.props._fetchEntryFormData(this.props.params.form, this.props.params.entry);
   },
 
-  onFormChange: function () {
+  onFormChange: function (data) {
     console.log('onFormChange', arguments);
+    this.setState({formdata: data.formData});
   },
 
   onFormSubmit: function (data) {
@@ -117,7 +124,7 @@ var Entry = React.createClass({
     return (
       <div className='form-entry-form-wrapper'>
         <Form schema={schema}
-          formData={this.props.formdata}
+          formData={this.state.formdata}
           uiSchema={uiSchema}
           onChange={this.onFormChange}
           onSubmit={this.onFormSubmit}
