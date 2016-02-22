@@ -34,7 +34,7 @@ var Entry = React.createClass({
 
   getInitialState: function () {
     return {
-      formdata: this.props.formdata
+      formdata: {}
     };
   },
 
@@ -42,8 +42,14 @@ var Entry = React.createClass({
     this.props._fetchEntryFormData(this.props.params.form, this.props.params.entry);
   },
 
+  componentWillReceiveProps: function (nextProps) {
+    if (this.props.formdata !== nextProps.formdata) {
+      this.setState({formdata: nextProps.formdata});
+    }
+  },
+
   onFormChange: function (data) {
-    console.log('onFormChange', arguments);
+    // console.log('onFormChange', arguments);
     this.setState({formdata: data.formData});
   },
 
@@ -56,7 +62,6 @@ var Entry = React.createClass({
         meta: this.props.meta,
         data: _.omit(data.formData, 'author')
       };
-      console.log('update go!', d);
 
       this.props._updateEntryFormData(this.props.form, this.props.entry, d);
     }
