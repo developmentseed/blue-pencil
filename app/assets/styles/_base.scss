@@ -233,7 +233,7 @@ a:active {
   @extend .clearfix;
 
   .card--entry-wrapper {
-    @include col(2/12);
+    @include col(2/12, $cycle: 6);
     margin-bottom: 2rem;
   }
 
@@ -249,7 +249,7 @@ a:active {
       padding: 1.5rem;
     }
     .card__title {
-      font-size: 1.5rem;
+      @include heading(1rem, small-up);
       text-transform: uppercase;
     }
   }

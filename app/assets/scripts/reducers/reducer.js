@@ -46,7 +46,7 @@ const defaultEntryFormDataState = {
   schema: {},
   meta: {},
   data: {},
-  title: '',
+  entryName: '',
   fetching: false,
   fetched: false,
   dataUpdate: {
@@ -72,7 +72,7 @@ const entryFormData = function (state = defaultEntryFormDataState, action) {
       state.entry = action.response.entry;
       state.schema = action.response.schema;
       state.meta = action.response.meta;
-      state.title = action.response.title;
+      state.entryName = action.response.entryName;
       state.data = action.response.data;
       state.fetching = false;
       state.fetched = true;
