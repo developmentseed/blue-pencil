@@ -16,7 +16,7 @@ var Entry = React.createClass({
     dataFetching: React.PropTypes.bool,
     dataFetched: React.PropTypes.bool,
     form: React.PropTypes.string,
-    title: React.PropTypes.string,
+    entryName: React.PropTypes.string,
     entry: React.PropTypes.string,
     schema: React.PropTypes.object,
     formdata: React.PropTypes.object,
@@ -157,7 +157,7 @@ var Entry = React.createClass({
           <div className='inner'>
             <div className='page__headline'>
               <p className='page-suptitle'><Link to='/'>Form</Link> / <Link to={`/forms/${this.props.form}`}>{this.props.params.form}</Link></p>
-              <h1 className='page-title'>{this.props.title || this.props.params.entry}</h1>
+              <h1 className='page-title'>{this.props.entryName || this.props.params.entry}</h1>
             </div>
           </div>
         </header>
@@ -182,7 +182,7 @@ function selector (state) {
     entry: state.entryFormData.entry,
     schema: state.entryFormData.schema,
     meta: state.entryFormData.meta,
-    title: state.entryFormData.title,
+    entryName: state.entryFormData.entryName,
     formdata: state.entryFormData.data,
     dataFetching: state.entryFormData.fetching,
     dataFetched: state.entryFormData.fetched,

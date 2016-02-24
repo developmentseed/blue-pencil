@@ -49,7 +49,7 @@ var Form = React.createClass({
                     return (
                       <li key={o.name} className='card--entry-wrapper'>
                         <article className='card card--entry'>
-                          <Link to={`/forms/${this.props.form}/${o.name}`} className='card__contents'>
+                          <Link to={`/forms/${this.props.form}/${o.id}`} className='card__contents'>
                             <h1 className='card__title'>{o.name}</h1>
                           </Link>
                         </article>
